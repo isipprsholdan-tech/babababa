@@ -16,6 +16,9 @@ build-backend = "hatchling.build"
 packages = ["VD_games"]
 
 [project.scripts]
+VD_games = "VD_games.VD_main:main"
 VD_even = "VD_games.scripts.VD_even:main"
-VD_calc = "VD_games.scripts.VD_calc:play_calc"
+VD_calc = "VD_games.scripts.VD_calc:main"
 VD_gcd = "VD_games.scripts.VD_gcd:main"
+VD-progression = "VD_games.scripts.vd_progression:main"
+VD-prime = "VD_games.scripts.vd_prime:main"

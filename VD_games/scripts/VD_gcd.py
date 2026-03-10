@@ -1,48 +1,25 @@
 import random
 import math
+import sys
+from VD_games.engine import play_game
 
-def welcome_user():
-    print("Welcome to the VD-games!")
-    name = input("May I have your name? ")
-    print(f"Hello, {name}!")
-    return name
 
-def find_gcd(a, b):
-    return math.gcd(a, b)
+DESCRIPTION = 'Найди наибольший общий делитель чисел.'
 
-def play_gcd():
-    name = welcome_user()
-    print('Найди наибольший общий делитель чисел.')
 
-    correct_answers = 0
-    rounds_to_win = 3
+def generate_round():
+    num1 = random.randint(1, 50)
+    num2 = random.randint(1, 50)
 
-    while correct_answers < rounds_to_win:
-        num1 = random.randint(1, 30)
-        num2 = random.randint(1, 30)
-        print(f'Вопрос: {num1} {num2}')
-        answer = input('Твой ответ: ').strip()
+    question = f"{num1} {num2}"
+    correct_answer = math.gcd(num1, num2)
 
-        try:
-            user_answer = int(answer)
-            correct_answer = find_gcd(num1, num2)
+    return question, correct_answer
 
-            if user_answer == correct_answer:
-                print('Верно!')
-                correct_answers += 1
-            else:
-                print(f"'{answer}' - неверно. Правильный ответ: '{correct_answer}'.")
-                print(f'Попробуй ещё раз, {name}!')
-                return
-        except ValueError:
-            print(f"'{answer}' - неверно. Нужно ввести число.")
-            print(f'Попробуй ещё раз, {name}!')
-            return
-
-    print(f'Поздравляю, {name}!')
 
 def main():
-    play_gcd()
+    play_game(sys.modules[__name__])
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
